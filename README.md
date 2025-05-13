@@ -69,10 +69,10 @@ Tested model on players with expiring contracts:
 ```
 
 ## 📈 Results
-**Model Performance:**
-Mean Squared Error (MSE): 74,323,038,271,342.59
-Root Mean Squared Error (RMSE): 8,621,081.04
-R-squared (R²): 0.5529
+**Initial Model Performance:**
+- Mean Squared Error (MSE): 74,323,038,271,342.59
+- Root Mean Squared Error (RMSE): 8,621,081.04
+- R-squared (R²): 0.5529
 
 These values suggest the model captures general trends, but misses some context like player market value, team fit, or injury history — things that stats alone can't explain.
 
