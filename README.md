@@ -1,8 +1,32 @@
 
-# 🏀 NBA Salary Prediction (2024–25)
+# 🏀 Predicting NBA Salary Through Different Models
 
-This project uses linear regression to predict NBA player salaries for the 2024–25 season based on per-game performance statistics. 
-The goal is to explore how different basketball metrics relate to player compensation and to build a simple but interpretable salary prediction model.
+This project built three different models to predict NBA player salaries for 2025-2026 season based on traditional per-game statistics.
+Through these models, the goal is to explore how traditional stats correlate to player compensation and to build a simple and interpretable salary prediction model.
+
+## 🚀 Getting Started
+
+### Prerequisites
+
+- Python 3.8+
+
+### Required Libraries
+
+- pandas
+- numpy
+- matplotlib
+- seaborn
+- scikit-learn
+- xgboost
+- plotly
+- torch
+
+### Running
+
+1. Download both folders (data, notebooks)
+2. Open any notebook inside notebooks folder (Linear Regression, Random Forest, or Deep Learning)
+3. Run it and try putting any name of current NBA player in the end of the notebook, section called 'Prediction Function'
+
 
 ## 📁 Project Structure
 
@@ -10,73 +34,102 @@ The goal is to explore how different basketball metrics relate to player compens
 NBA_Salary_Prediction/
 │
 ├── data/
-│   ├── NBA Player Salaries_2024-25_1.csv
-│   └── NBA Player Stats_2024-25_Per_Game.csv
+│   ├── 2022 NBA Team Market Size.csv
+│   └── NBA Player Salaries_2000-2025.csv
+|   └── NBA Player Salaries_2024-25_1.csv
+|   └── NBA Player Stats and Salaries_2000-2025.csv
+|   └── NBA Player Stats and Salaries_2010-2025.csv
+|   └── NBA Player Stats_1998-2025.csv
+|   └── NBA Player Stats_2024-25_Per_Game.csv
 │
 ├── notebooks/
-│   └── NBA_Salary_Prediction.ipynb
+|   ├── NBA Salary Project_DL_Traditional.ipynb
+│   └── NBA Salary Project_LR_Traditional.ipynb
+│   └── NBA Salary Project_RF_Traditional.ipynb
 │
-├── README.md
-└── requirements.txt (optional)
+├── NBA Salary Project Data Preparation.ipynb
+└── README.md
 ```
 
-## 📊 Dataset Sources
+## 🔍 Description & Overview
 
-- **Salary Data**: NBA player salaries for the 2024–25 season.
-- **Stats Data**: Per-game statistics for each player from the same season.
+Three different models were built in this project:
+- Linear Regression model (NBA Salary Project_LR_Traditional.ipynb)
+- Random Forest model (NBA Salary Project_RF_Traditional.ipynb)
+- Deep Learning model (NBA Salary Project_DL_Traditional.ipynb)
+Each model used different sets of features from different timeframe and scale of data. All three models try to predict a player's salary for 2025-26 season as accurate as possible through further tuning and adjustments.
 
-> Note: Players who played for multiple teams were consolidated using their "total" row (e.g., `2TM`, `3TM`).
+## 📊 Datasets Used
 
-## 🔍 Key Steps & Methodology
+- NBA Player Stats_2024-25_Per_Game.csv: Every player's per-game stats for 2024-25 season. Scrapped from [Basketball Reference](https://www.basketball-reference.com/leagues/NBA_2025_per_game.html).
+- NBA Player Salaries_2024-25_1.csv: Every player's salary for 2024-25 season. Also scrapped from [Basketball Reference](https://www.basketball-reference.com/contracts/players.html)
+- 2022 NBA Team Market Size.csv: Includes NBA teams' metro population, TV market size, team revenue from 2022. Thanks to [HoopSocial](https://hoop-social.com/nba-team-market-size-rankings/) and [Statista](https://www.statista.com/statistics/193704/revenue-of-national-basketball-association-teams-in-2010/)
+[Data Preparation notebook](https://github.com/edwinjeon/NBA-Salary-Prediction/blob/main/NBA%20Salary%20Project%20Data%20Preparation.ipynb) includes scrapping script for below datasets:
+- NBA Player Salaries_2000-2025.csv
+- NBA Player Stats_1998-2025.csv
+- NBA Player Stats and Salaries_2000-2025.csv
+- NBA Player Stats and Salaries_2010-2025.csv
+Stats data were scrapped from Basketball Reference and Salaries data were scrapped from [HoopsHype](https://hoopshype.com/salaries/players/2020-2021/).
 
-### 1. Data Cleaning
-- Removed duplicate rows and missing values.
-- Normalized player names and dropped unnecessary columns like `Rk`.
-- Consolidated multi-team players into a single row per player.
+## 📏 Evaluation Metrics
 
-### 2. Feature Selection
-Features were selected based on:
-- **Correlation analysis** with salary
-- **Multicollinearity checks** (to reduce redundant or dependent variables)
-- **Interpretability** and real-world basketball context
+- **Root Mean Squared Error (RMSE)** measures the model’s prediction error in dollar terms.
+- **R-squared (R²)** explains the proportion of variance in salary that is predictable from the features used.
+These two metrics help balance interpretability and accuracy in evaluating model performance.
 
-Final features for modeling:
-```
-PTS, MP, TOV, AST, TRB, STL, Age
-```
+## 📈 Linear Regression
 
-### 3. Regression Modeling
-- Used **Linear Regression** with standardized features.
-- Split data into training and test sets (80/20 split).
-- Evaluated with R², RMSE, and coefficient interpretation.
+Linear Regression model only used stats and salary data for 2024-25 season, since LR model can be skewed by some outliers with a larger dataset.
+To filter out the features (stats) that will be fed to the model, I did 1) dropped stats that showed low correlation with salary 2) and also dropped stats with high [VIF](https://www.investopedia.com/terms/v/variance-inflation-factor.asp) score. These processes has successfully minimized multicollinearity and overfitting issues, which are very often problematic when building LR models.
+As a result of filtering process, I used PTS, AST, REB, STL, BLK, and Age of a player as a set of features.
+Finally, testing results were:
+- **Root Mean Squared Error (RMSE)**: $9,240,772.81
+- **R-squared (R²)**: 0.5261
 
-### 4. Model Insights
-- Some surprising results emerged (e.g. negative coefficients for PTS in early models), which led to iterative refinement.
-- Efficiency stats like FG% and 3P% were excluded due to their weak or misleading correlations with salary.
+## 🌳 Random Forest Regression
 
-### 5. Prediction Function
-Created a reusable function to predict a player's salary and compare it to their actual 2024–25 contract.
+After building linear regression model, I wanted to improve the accuracy of prediction model. So I tried to compare various non-linear regression models, including **Random Forest**, **Gradient Boost**, **XGBoost**, and **Extra Trees** Regressor. Without any tuning and adjustment, Random Forest regressor showed best test result among four. So I chose Random Forest to build a prediction model.
+Since Random Forest is less vulnerable to multicollinearity and overfitting issues, I tried four combinations to find best set for prediction:
+- Using 2024-25 data and limited features (stats that I used for LR)
+- Using 2024-25 data and all features (including every stats on dataset)
+- Using 2010-25 data and limited features
+- **Using 2010-25 data and all features**
+Among these four, using 2010-25 data and all features performed the best. Then I conducted some hyperparameter tuning to further improve performance of the model.
+Testing results were:
+- **RMSE**: $4,199,705.10
+- **R-squared (R²)**: 0.7440
 
-### 6. Sample Predictions
-Tested model on players with expiring contracts:
-```
-- James Harden
-- LeBron James
-- Clint Capela
-- Chris Paul
-- Ty Jerome
-- Jaxson Hayes
-```
+## 🧠 Deep Learning
 
-## 📈 Results
-**Initial Model Performance:**
-- Mean Squared Error (MSE): 74,323,038,271,342.59
-- Root Mean Squared Error (RMSE): 8,621,081.04
-- R-squared (R²): 0.5529
+I lastly built Deep Learning model through **PyTorch**. Since it is DL which requires lots of data, I used 2010 data with all the features, just like my RF model. I trained up to 50 epochs, and testing results were: 
+Testing results were:
+- **RMSE**: $4,931,571.61
+- **R-squared (R²)**: 0.6501
+Obviously testing results vary every time I train it, but R^2 score does not dramatically increase or decrease by more than 0.02.
 
-These values suggest the model captures general trends, but misses some context like player market value, team fit, or injury history — things that stats alone can't explain.
+## ⚖️ Comparing Models
 
-## 📌 Future Improvements
-- Add contract metadata: years, clauses, incentives
-- Incorporate advanced stats (e.g. RAPTOR, BPM, EPM, PER...)
-- Use position/team as categorical variables (e.g. Big/Small Market...)
+| Model             | RMSE           | R-squared (R²)     |
+| ----------------- | -------------- | ------------------ |
+| Linear Regression | \$9,240,772.81 | 0.5261             |
+| Random Forest     | \$4,199,705.10 | 0.7440             |
+| Deep Learning     | \$4,931,571.61 | 0.6501             |
+
+The Random Forest model outperforms the others with the lowest RMSE and highest R², indicating strong predictive power and better fit to the data. While Deep Learning also performs well, it slightly underperforms Random Forest in both metrics. However, there is a big room for improvement for enhancing Deep Learning model.
+
+## 📌 Future Work
+
+- Incorporate player popularity metrics (e.g., social media followers)
+- Add injury history or availability data
+- Include market size and team success as additional features (already collected)
+- Improve Deep Learning model with more epochs, regularization, or advanced architectures (e.g., dropout, batch normalization)
+- Deploy as a simple web app to input stats and predict salary
+
+## 🙌 Acknowledgments
+
+- [Basketball Reference](https://www.basketball-reference.com/)
+- [HoopsHype](https://hoopshype.com/salaries/)
+- [HoopSocial](https://hoop-social.com/nba-team-market-size-rankings/)
+- [Statista](https://www.statista.com/)
+- [Koki Ando](https://www.kaggle.com/koki25ando)
+
