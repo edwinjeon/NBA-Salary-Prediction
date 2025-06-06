@@ -82,11 +82,11 @@ These two metrics help balance interpretability and accuracy in evaluating model
 ## 📈 Linear Regression
 
 Linear Regression model only used stats and salary data for 2024-25 season, since LR model can be skewed by some outliers with a larger dataset.
-
-To filter out the features (stats) that will be fed to the model, I did 1) dropped stats that showed low correlation with salary 2) and also dropped stats with high [VIF](https://www.investopedia.com/terms/v/variance-inflation-factor.asp) score. These processes has successfully minimized multicollinearity and overfitting issues, which are very often problematic when building LR models.
-
+To filter out the features (stats) that will be fed to the model, I did: 
+1) dropped stats that showed low correlation with salary
+2) and also dropped stats with high [VIF](https://www.investopedia.com/terms/v/variance-inflation-factor.asp) score.
+These processes has successfully minimized multicollinearity and overfitting issues, which are very often problematic when building LR models.
 As a result of filtering process, I used PTS, AST, REB, STL, BLK, and Age of a player as a set of features.
-
 Finally, testing results were:
 - **Root Mean Squared Error (RMSE)**: $9,240,772.81
 - **R-squared (R²)**: 0.5261
