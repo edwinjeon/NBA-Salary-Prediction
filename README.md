@@ -76,37 +76,45 @@ Each model used different sets of features from different timeframe and scale of
 
 - **Root Mean Squared Error (RMSE)** measures the model’s prediction error in dollar terms.
 - **R-squared (R²)** explains the proportion of variance in salary that is predictable from the features used.
-<br><br>
+
 These two metrics help balance interpretability and accuracy in evaluating model performance.
 
 ## 📈 Linear Regression
 
 Linear Regression model only used stats and salary data for 2024-25 season, since LR model can be skewed by some outliers with a larger dataset.
+
 To filter out the features (stats) that will be fed to the model, I did 1) dropped stats that showed low correlation with salary 2) and also dropped stats with high [VIF](https://www.investopedia.com/terms/v/variance-inflation-factor.asp) score. These processes has successfully minimized multicollinearity and overfitting issues, which are very often problematic when building LR models.
+
 As a result of filtering process, I used PTS, AST, REB, STL, BLK, and Age of a player as a set of features.
+
 Finally, testing results were:
 - **Root Mean Squared Error (RMSE)**: $9,240,772.81
 - **R-squared (R²)**: 0.5261
 
 ## 🌳 Random Forest Regression
 
-After building linear regression model, I wanted to improve the accuracy of prediction model. So I tried to compare various non-linear regression models, including **Random Forest**, **Gradient Boost**, **XGBoost**, and **Extra Trees** Regressor. Without any tuning and adjustment, Random Forest regressor showed best test result among four. So I chose Random Forest to build a prediction model.
+After building linear regression model, I wanted to improve the accuracy of prediction model. So I tried to compare various non-linear regression models, including **Random Forest**, **Gradient Boost**, **XGBoost**, and **Extra Trees** Regressor. 
+
+Without any tuning and adjustment, Random Forest regressor showed best test result among four. So I chose Random Forest to build a prediction model.
+
 Since Random Forest is less vulnerable to multicollinearity and overfitting issues, I tried four combinations to find best set for prediction:
 - Using 2024-25 data and limited features (stats that I used for LR)
 - Using 2024-25 data and all features (including every stats on dataset)
 - Using 2010-25 data and limited features
 - **Using 2010-25 data and all features**
+
 Among these four, using 2010-25 data and all features performed the best. Then I conducted some hyperparameter tuning to further improve performance of the model.
+
 Testing results were:
 - **RMSE**: $4,199,705.10
 - **R-squared (R²)**: 0.7440
 
 ## 🧠 Deep Learning
 
-I lastly built Deep Learning model through **PyTorch**. Since it is DL which requires lots of data, I used 2010 data with all the features, just like my RF model. I trained up to 50 epochs, and testing results were: 
-Testing results were:
+I lastly built Deep Learning model through **PyTorch**. Since it is DL which requires lots of data, I used 2010 data with all the features, just like my RF model. I trained up to 50 epochs, and testing results were:
 - **RMSE**: $4,931,571.61
 - **R-squared (R²)**: 0.6501
+
 Obviously testing results vary every time I train it, but R^2 score does not dramatically increase or decrease by more than 0.02.
 
 ## ⚖️ Comparing Models
@@ -117,7 +125,7 @@ Obviously testing results vary every time I train it, but R^2 score does not dra
 | Random Forest     | \$4,199,705.10 | 0.7440             |
 | Deep Learning     | \$4,931,571.61 | 0.6501             |
 
-The Random Forest model outperforms the others with the lowest RMSE and highest R², indicating strong predictive power and better fit to the data. While Deep Learning also performs well, it slightly underperforms Random Forest in both metrics. However, there is a big room for improvement for enhancing Deep Learning model.
+Random Forest model outperforms the others with the lowest RMSE and highest R², indicating strong predictive power and better fit to the data. While Deep Learning also performs well, it slightly underperforms Random Forest in both metrics. However, there is a big room for improvement for enhancing Deep Learning model.
 
 ## 📌 Future Work
 
