@@ -57,7 +57,8 @@ Three different models were built in this project:
 - Linear Regression model (NBA Salary Project_LR_Traditional.ipynb)
 - Random Forest model (NBA Salary Project_RF_Traditional.ipynb)
 - Deep Learning model (NBA Salary Project_DL_Traditional.ipynb)
-<br><br> Each model used different sets of features from different timeframe and scale of data. All three models try to predict a player's salary for 2025-26 season as accurate as possible through further tuning and adjustments.
+
+Each model used different sets of features from different timeframe and scale of data. All three models try to predict a player's salary for 2025-26 season as accurate as possible through further tuning and adjustments.
 
 ## 📊 Datasets Used
 
@@ -75,7 +76,8 @@ Three different models were built in this project:
 
 - **Root Mean Squared Error (RMSE)** measures the model’s prediction error in dollar terms.
 - **R-squared (R²)** explains the proportion of variance in salary that is predictable from the features used.
-<br> These two metrics help balance interpretability and accuracy in evaluating model performance.
+<br><br>
+These two metrics help balance interpretability and accuracy in evaluating model performance.
 
 ## 📈 Linear Regression
 
