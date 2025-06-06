@@ -124,7 +124,7 @@ Obviously testing results vary every time I train it, but R^2 score does not dra
 | Model             | RMSE           | R-squared (R²)     |
 | ----------------- | -------------- | ------------------ |
 | Linear Regression | \$9,240,772.81 | 0.5261             |
-| Random Forest     | \**$4,199,705.10** | **0.7440**             |
+| Random Forest     | **\$4,199,705.10** | **0.7440**             |
 | Deep Learning     | \$4,931,571.61 | 0.6501             |
 
 Random Forest model outperforms the others with the lowest RMSE and highest R², indicating strong predictive power and better fit to the data. While Deep Learning also performs well, it slightly underperforms Random Forest in both metrics. However, there is a big room for improvement for enhancing Deep Learning model.
