@@ -57,14 +57,14 @@ Three different models were built in this project:
 - Linear Regression model (NBA Salary Project_LR_Traditional.ipynb)
 - Random Forest model (NBA Salary Project_RF_Traditional.ipynb)
 - Deep Learning model (NBA Salary Project_DL_Traditional.ipynb)
-<br> Each model used different sets of features from different timeframe and scale of data. All three models try to predict a player's salary for 2025-26 season as accurate as possible through further tuning and adjustments.
+<br><br> Each model used different sets of features from different timeframe and scale of data. All three models try to predict a player's salary for 2025-26 season as accurate as possible through further tuning and adjustments.
 
 ## 📊 Datasets Used
 
 - NBA Player Stats_2024-25_Per_Game.csv: Every player's per-game stats for 2024-25 season.
 - NBA Player Salaries_2024-25_1.csv: Every player's salary for 2024-25 season.
 - 2022 NBA Team Market Size.csv: Includes NBA teams' metro population, TV market size, team revenue from 2022.
-<br>
+
 **NBA Salary Project Data Preparation.ipynb** includes full scrapping script for below datasets:
 - NBA Player Salaries_2000-2025.csv
 - NBA Player Stats_1998-2025.csv
