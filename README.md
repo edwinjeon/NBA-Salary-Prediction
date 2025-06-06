@@ -65,7 +65,7 @@ Three different models were built in this project:
 - NBA Player Salaries_2024-25_1.csv: Every player's salary for 2024-25 season.
 - 2022 NBA Team Market Size.csv: Includes NBA teams' metro population, TV market size, team revenue from 2022.
 <br>
-[Data Preparation notebook](https://github.com/edwinjeon/NBA-Salary-Prediction/blob/main/NBA%20Salary%20Project%20Data%20Preparation.ipynb) includes scrapping script for below datasets:
+**NBA Salary Project Data Preparation.ipynb** includes full scrapping script for below datasets:
 - NBA Player Salaries_2000-2025.csv
 - NBA Player Stats_1998-2025.csv
 - NBA Player Stats and Salaries_2000-2025.csv
