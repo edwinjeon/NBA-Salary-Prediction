@@ -87,7 +87,7 @@ To filter out the features (stats) that will be fed to the model, I did:
 1) dropped stats that showed low correlation with salary
 2) and also dropped stats with high [VIF](https://www.investopedia.com/terms/v/variance-inflation-factor.asp) score.
 
-These processes has successfully minimized multicollinearity and overfitting issues, which are very often problematic when building LR models. As a result of filtering process, I used PTS, AST, REB, STL, BLK, and Age of a player as a set of features.
+These processes has successfully minimized multicollinearity and overfitting issues, which are very often problematic when building LR models. As a result of filtering process, I used **PTS, AST, REB, STL, BLK**, and **Age** of a player as a set of features.
 
 Finally, testing results were:
 - **Root Mean Squared Error (RMSE)**: $9,240,772.81
