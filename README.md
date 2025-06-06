@@ -57,25 +57,25 @@ Three different models were built in this project:
 - Linear Regression model (NBA Salary Project_LR_Traditional.ipynb)
 - Random Forest model (NBA Salary Project_RF_Traditional.ipynb)
 - Deep Learning model (NBA Salary Project_DL_Traditional.ipynb)
-Each model used different sets of features from different timeframe and scale of data. All three models try to predict a player's salary for 2025-26 season as accurate as possible through further tuning and adjustments.
+<br> Each model used different sets of features from different timeframe and scale of data. All three models try to predict a player's salary for 2025-26 season as accurate as possible through further tuning and adjustments.
 
 ## 📊 Datasets Used
 
-- NBA Player Stats_2024-25_Per_Game.csv: Every player's per-game stats for 2024-25 season. Scrapped from [Basketball Reference](https://www.basketball-reference.com/leagues/NBA_2025_per_game.html).
-- NBA Player Salaries_2024-25_1.csv: Every player's salary for 2024-25 season. Also scrapped from [Basketball Reference](https://www.basketball-reference.com/contracts/players.html)
-- 2022 NBA Team Market Size.csv: Includes NBA teams' metro population, TV market size, team revenue from 2022. Thanks to [HoopSocial](https://hoop-social.com/nba-team-market-size-rankings/) and [Statista](https://www.statista.com/statistics/193704/revenue-of-national-basketball-association-teams-in-2010/)
+- NBA Player Stats_2024-25_Per_Game.csv: Every player's per-game stats for 2024-25 season.
+- NBA Player Salaries_2024-25_1.csv: Every player's salary for 2024-25 season.
+- 2022 NBA Team Market Size.csv: Includes NBA teams' metro population, TV market size, team revenue from 2022.
+<br>
 [Data Preparation notebook](https://github.com/edwinjeon/NBA-Salary-Prediction/blob/main/NBA%20Salary%20Project%20Data%20Preparation.ipynb) includes scrapping script for below datasets:
 - NBA Player Salaries_2000-2025.csv
 - NBA Player Stats_1998-2025.csv
 - NBA Player Stats and Salaries_2000-2025.csv
 - NBA Player Stats and Salaries_2010-2025.csv
-Stats data were scrapped from Basketball Reference and Salaries data were scrapped from [HoopsHype](https://hoopshype.com/salaries/players/2020-2021/).
 
 ## 📏 Evaluation Metrics
 
 - **Root Mean Squared Error (RMSE)** measures the model’s prediction error in dollar terms.
 - **R-squared (R²)** explains the proportion of variance in salary that is predictable from the features used.
-These two metrics help balance interpretability and accuracy in evaluating model performance.
+<br> These two metrics help balance interpretability and accuracy in evaluating model performance.
 
 ## 📈 Linear Regression
 
