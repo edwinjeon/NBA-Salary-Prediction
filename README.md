@@ -86,47 +86,42 @@ Full scraping & cleaning scripts are in ```NBA Salary Project Data Preparation.i
 These two metrics help balance interpretability and accuracy in evaluating model performance.
 
 
-## 📈 Linear Regression
 
-Linear Regression model only used stats and salary data for 2024-25 season, since LR model can be skewed by some outliers with a larger dataset.
+## 🛠️ Methodology
 
-To filter out the features (stats) that will be fed to the model, I did: 
-1) dropped stats that showed low correlation with salary
-2) and also dropped stats with high [VIF](https://www.investopedia.com/terms/v/variance-inflation-factor.asp) score.
+### **1. Data Preparation**
+- Collected stats & salaries from 1998–2025
+- Merged multiple sources into structured datasets
+- Cleaned missing values, standardized columns
+- Created two data scopes:
+  - **Single season (2024–25)**
+  - **Multi-season (2010–25)**
 
-These processes has successfully minimized multicollinearity and overfitting issues, which are very often problematic when building LR models. As a result of filtering process, I used **PTS, AST, REB, STL, BLK**, and **Age** of a player as a set of features for salary prediction.
+### **2. Feature Selection**
+- Dropped features with low salary correlation
+- Removed high multicollinearity features (using [VIF](https://www.investopedia.com/terms/v/variance-inflation-factor.asp))
+- Final feature sets:
+  - **Linear Regression**: PTS, AST, REB, STL, BLK, Age
+  - **Random Forest/Deep Learning models**: All features from dataset
 
-Finally, testing results were:
-- **Root Mean Squared Error (RMSE)**: $9,240,772.81
-- **R-squared (R²)**: 0.5261
+### **3. Modeling Approaches**
+#### **Linear Regression**
+- Used only 2024–25 stats (to minimize outlier distortion)
+- Features chosen via correlation + VIF filtering
+- **Performance**: RMSE $9.24M, R² 0.526
 
+#### **Random Forest Regression**
+- Compared multiple regressors (RF, GBM, XGBoost, Extra Trees)
+- RF outperformed others even without tuning
+- Best config: 2010–25 data + all features + hyperparameter tuning
+- **Performance**: RMSE $4.20M, R² 0.744
 
-## 🌳 Random Forest Regression
-
-After building linear regression model, I wanted to improve the accuracy of prediction model. So I tried to compare various non-linear regression models, including **Random Forest**, **Gradient Boost**, **XGBoost**, and **Extra Trees** Regressor. 
-
-Without any tuning and adjustment, Random Forest regressor showed best test result among four. So I chose Random Forest to build a prediction model.
-
-Since Random Forest is less vulnerable to multicollinearity and overfitting issues, I tried four different combinations to find best set for prediction:
-- Using 2024-25 data and limited features (stats that I used for LR)
-- Using 2024-25 data and all features (including every stats on dataset)
-- Using 2010-25 data and limited features
-- **Using 2010-25 data and all features**
-
-Among these four, using 2010-25 data and all features performed the best for Random Forest. Then I conducted some hyperparameter tuning to further improve performance of the model.
-
-Final testing results were:
-- **RMSE**: $4,199,705.10
-- **R-squared (R²)**: 0.7440
-
-
-## 🧠 Deep Learning
-
-I lastly built Deep Learning model through **PyTorch**. Since it is Deep Learning which requires lots of data, I used data ranging from 2010-2025 with all the features, just like my RF model. I trained up to 50 epochs, and testing results were:
-- **RMSE**: $4,931,571.61
-- **R-squared (R²)**: 0.6501
-
-Obviously testing results vary every time I train it, but R^2 score does not dramatically increase or decrease by more than 0.02.
+#### **Deep Learning (PyTorch)**
+- Fully connected neural network
+- Trained on 2010–25 data with all features
+- 50 epochs, standard scaling
+- **Performance**: RMSE $4.93M, R² 0.650
+- Results vary slightly between runs (±0.02 R²)
 
 
 ## ⚖️ Comparing Models
@@ -137,7 +132,7 @@ Obviously testing results vary every time I train it, but R^2 score does not dra
 | Random Forest     | **\$4,199,705.10** | **0.7440**             |
 | Deep Learning     | \$4,931,571.61 | 0.6501             |
 
-**Random Forest** model outperforms the others with the lowest RMSE and highest R², indicating strong predictive power and better fit to the data. While Deep Learning also performs well, it slightly underperforms Random Forest in both metrics. However, there is a big room for improvement for enhancing Deep Learning model.
+**Random Forest** model outperforms the others with the lowest RMSE and highest R², indicating strong predictive power and better fit to the data. While Deep Learning also performs well, it slightly underperforms Random Forest in both metrics.
 
 
 ## 📷 Predictions
