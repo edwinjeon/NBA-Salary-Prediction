@@ -142,7 +142,7 @@ Obviously testing results vary every time I train it, but R^2 score does not dra
 
 ## 📷 Predictions
 
-![](images/prediction.png)
+![](images/Prediction.png)
 
 
 ## 🙌 Links
