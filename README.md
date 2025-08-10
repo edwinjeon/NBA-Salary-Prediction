@@ -1,7 +1,7 @@
 
 # 🏀 NBA Salary Prediction
 
-[](images/NBA.jpg)
+![](images/NBA.jpg)
 
 This project built three different models to predict NBA player salaries for 2025-2026 season based on traditional per-game statistics.
 Through these models, the goal is to explore how traditional stats correlate to player compensation and to build a simple and interpretable salary prediction model!
@@ -142,7 +142,7 @@ Obviously testing results vary every time I train it, but R^2 score does not dra
 
 ## 📷 Predictions
 
-[](images/prediction.png)
+![](images/prediction.png)
 
 
 ## 🙌 Links
