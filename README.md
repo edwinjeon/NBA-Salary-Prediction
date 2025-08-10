@@ -73,9 +73,9 @@ Each model used different sets of features from different timeframe and scale of
 | **NBA Player Stats_2024-25_Per_Game.csv** | Per-game stats for the 2024–25 season                    |
 | **NBA Player Salaries_2024-25_1.csv**      | Player salaries for 2024–25                              |
 | **2022 NBA Team Market Size.csv**            | Market size, metro population, team revenue              |
-| **Historical Datasets (2000–2025)**          | Scraped & merged from Basketball Reference and HoopsHype |
+| **Four Historical Datasets (2000–2025)**          | Stats/Salaries from 2000/2010-2025 |
 
-Full scraping & cleaning scripts are in NBA Salary Project Data Preparation.ipynb.
+Full scraping & cleaning scripts are in ```NBA Salary Project Data Preparation.ipynb```.
 
 
 ## 📏 Evaluation Metrics
