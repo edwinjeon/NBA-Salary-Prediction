@@ -1,8 +1,10 @@
 
-# 🏀 NBA Salary Prediction Through Regression and Deep Learning
+# 🏀 NBA Salary Prediction
+
+[](images/NBA.jpg)
 
 This project built three different models to predict NBA player salaries for 2025-2026 season based on traditional per-game statistics.
-Through these models, the goal is to explore how traditional stats correlate to player compensation and to build a simple and interpretable salary prediction model.
+Through these models, the goal is to explore how traditional stats correlate to player compensation and to build a simple and interpretable salary prediction model!
 
 
 ## 🚀 Getting Started
@@ -34,6 +36,7 @@ Through these models, the goal is to explore how traditional stats correlate to 
 ```
 NBA_Salary_Prediction/
 │
+├── images/
 ├── data/
 │   ├── 2022 NBA Team Market Size.csv
 │   └── NBA Player Salaries_2000-2025.csv
@@ -56,24 +59,23 @@ NBA_Salary_Prediction/
 ## 🔍 Description & Overview
 
 Three different models were built in this project:
-- Linear Regression model (NBA Salary Project_LR_Traditional.ipynb)
-- Random Forest model (NBA Salary Project_RF_Traditional.ipynb)
-- Deep Learning model (NBA Salary Project_DL_Traditional.ipynb)
+- **Linear Regression model** (NBA Salary Project_LR_Traditional.ipynb)
+- **Random Forest model** (NBA Salary Project_RF_Traditional.ipynb)
+- **Deep Learning model** (NBA Salary Project_DL_Traditional.ipynb)
 
 Each model used different sets of features from different timeframe and scale of data. All three models try to predict a player's salary for 2025-26 season as accurate as possible through further tuning and adjustments.
 
 
-## 📊 Datasets Used
+## 📊 Datasets
 
-- NBA Player Stats_2024-25_Per_Game.csv: Every player's per-game stats for 2024-25 season.
-- NBA Player Salaries_2024-25_1.csv: Every player's salary for 2024-25 season.
-- 2022 NBA Team Market Size.csv: Includes NBA teams' metro population, TV market size, team revenue from 2022.
+| Dataset                                      | Description                                              |
+| -------------------------------------------- | -------------------------------------------------------- |
+| **NBA Player Stats_2024-25_Per_Game.csv** | Per-game stats for the 2024–25 season                    |
+| **NBA Player Salaries_2024-25_1.csv**      | Player salaries for 2024–25                              |
+| **2022 NBA Team Market Size.csv**            | Market size, metro population, team revenue              |
+| **Historical Datasets (2000–2025)**          | Scraped & merged from Basketball Reference and HoopsHype |
 
-**NBA Salary Project Data Preparation.ipynb** includes full scrapping script for below datasets:
-- NBA Player Salaries_2000-2025.csv
-- NBA Player Stats_1998-2025.csv
-- NBA Player Stats and Salaries_2000-2025.csv
-- NBA Player Stats and Salaries_2010-2025.csv
+Full scraping & cleaning scripts are in NBA Salary Project Data Preparation.ipynb.
 
 
 ## 📏 Evaluation Metrics
@@ -92,7 +94,7 @@ To filter out the features (stats) that will be fed to the model, I did:
 1) dropped stats that showed low correlation with salary
 2) and also dropped stats with high [VIF](https://www.investopedia.com/terms/v/variance-inflation-factor.asp) score.
 
-These processes has successfully minimized multicollinearity and overfitting issues, which are very often problematic when building LR models. As a result of filtering process, I used **PTS, AST, REB, STL, BLK**, and **Age** of a player as a set of features.
+These processes has successfully minimized multicollinearity and overfitting issues, which are very often problematic when building LR models. As a result of filtering process, I used **PTS, AST, REB, STL, BLK**, and **Age** of a player as a set of features for salary prediction.
 
 Finally, testing results were:
 - **Root Mean Squared Error (RMSE)**: $9,240,772.81
@@ -105,22 +107,22 @@ After building linear regression model, I wanted to improve the accuracy of pred
 
 Without any tuning and adjustment, Random Forest regressor showed best test result among four. So I chose Random Forest to build a prediction model.
 
-Since Random Forest is less vulnerable to multicollinearity and overfitting issues, I tried four combinations to find best set for prediction:
+Since Random Forest is less vulnerable to multicollinearity and overfitting issues, I tried four different combinations to find best set for prediction:
 - Using 2024-25 data and limited features (stats that I used for LR)
 - Using 2024-25 data and all features (including every stats on dataset)
 - Using 2010-25 data and limited features
 - **Using 2010-25 data and all features**
 
-Among these four, using 2010-25 data and all features performed the best. Then I conducted some hyperparameter tuning to further improve performance of the model.
+Among these four, using 2010-25 data and all features performed the best for Random Forest. Then I conducted some hyperparameter tuning to further improve performance of the model.
 
-Testing results were:
+Final testing results were:
 - **RMSE**: $4,199,705.10
 - **R-squared (R²)**: 0.7440
 
 
 ## 🧠 Deep Learning
 
-I lastly built Deep Learning model through **PyTorch**. Since it is DL which requires lots of data, I used 2010 data with all the features, just like my RF model. I trained up to 50 epochs, and testing results were:
+I lastly built Deep Learning model through **PyTorch**. Since it is Deep Learning which requires lots of data, I used data ranging from 2010-2025 with all the features, just like my RF model. I trained up to 50 epochs, and testing results were:
 - **RMSE**: $4,931,571.61
 - **R-squared (R²)**: 0.6501
 
@@ -135,16 +137,12 @@ Obviously testing results vary every time I train it, but R^2 score does not dra
 | Random Forest     | **\$4,199,705.10** | **0.7440**             |
 | Deep Learning     | \$4,931,571.61 | 0.6501             |
 
-Random Forest model outperforms the others with the lowest RMSE and highest R², indicating strong predictive power and better fit to the data. While Deep Learning also performs well, it slightly underperforms Random Forest in both metrics. However, there is a big room for improvement for enhancing Deep Learning model.
+**Random Forest** model outperforms the others with the lowest RMSE and highest R², indicating strong predictive power and better fit to the data. While Deep Learning also performs well, it slightly underperforms Random Forest in both metrics. However, there is a big room for improvement for enhancing Deep Learning model.
 
 
-## 📌 Future Work
+## 📷 Predictions
 
-- Incorporate player popularity metrics (e.g., social media followers)
-- Add injury history or availability data
-- Include market size and team success as additional features (already collected)
-- Improve Deep Learning model with more epochs, regularization, or advanced architectures (e.g., dropout, batch normalization)
-- Deploy as a simple web app to input stats and predict salary
+[](images/prediction.png)
 
 
 ## 🙌 Links
