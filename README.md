@@ -140,7 +140,7 @@ These two metrics help balance interpretability and accuracy in evaluating model
 ![](images/Prediction.png)
 
 
-## Links
+## 🔗 Links
 - [Kaggle- Linear Regression](https://www.kaggle.com/code/ratin21/predicting-nba-salary-through-linear-regression)
 - [Kaggle- Random Forest](https://www.kaggle.com/code/ratin21/predicting-nba-salary-through-random-forest)
 - [Kaggle- Deep Learning](https://www.kaggle.com/code/ratin21/predicting-nba-salary-through-linear-regression)
